@@ -26,6 +26,5 @@ $("#inventory-list .store-area-3 li").mousedown(function() {
 $("#shopping-list ul").mousedown(function() {
   $(this).clone().appendTo("#in-cart ul");
   $(this).hide();
-  console.log("yes");
 });
 });

@@ -11,6 +11,7 @@ html, body {
   min-height: 100%;
   width: 100%;
   min-width: 300px;
+  max-width: 600px;
   padding: 1em;
   background-color: #FFF;
   font-family: 'Open Sans', sans-serif;
@@ -26,6 +27,10 @@ h2 {
 p {
   line-height: 2em;
 }
+.caption {
+  font-size: .9em;
+  line-height: 1em;
+}
 }
 ul {
   list-style: none;
@@ -35,16 +40,17 @@ ul {
 }
 
 hr {
-  width: 75%;
+  width: 85%;
 }
 
 /* style list item containers */
 #inventory-list {
   border: 3px dotted gray;
-  margin: 3px 0 3px 3px;
+  margin: 3px;
   padding: 3px;
   display: block;
-  min-width: 150px;
+  /*  min-width: 150px;  */
+  width: 30%;
   float: left;
 }
 #inventory-list ul {
@@ -56,8 +62,9 @@ hr {
   margin: 3px;
   padding: 3px;
   display: block;
-  min-width: 150px;
-  max-width: 200px;
+/*  min-width: 150px;
+  max-width: 200px; */
+  width: 30%;
   float: left;
 }
 #shopping-list ul {
@@ -72,9 +79,10 @@ hr {
   margin: 3px;
   padding: 3px;
   display: block;
-  min-width: 150px;
-  max-width: 200px;
-  float: right;
+  width: 30%;
+/*  min-width: 150px;
+  max-width: 200px; */
+  float: left;
 }
 #in-cart ul {
   list-style: none;
@@ -83,7 +91,7 @@ hr {
   color: black;
 }
 /* create larger containers to manage floats */
-#editable-pick-list {
+/*#editable-pick-list {
   border: 1px white;
   margin: 3px 0 3px 3px;
   padding: 3px;
@@ -99,6 +107,7 @@ hr {
   width: 400px;
   float: right;
 }
+*/
 /* end style list item containers */
 
 /* style inventory and shopping list item styles */
