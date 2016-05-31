@@ -34,6 +34,10 @@ ul {
   margin: 1px;
 }
 
+hr {
+  width: 75%;
+}
+
 /* style list item containers */
 #inventory-list {
   border: 3px dotted gray;
@@ -76,11 +80,11 @@ ul {
   list-style: none;
 }
 #in-cart li {
-  color: blue;
+  color: black;
 }
 /* create larger containers to manage floats */
 #editable-pick-list {
-  border: 1px dotted black;
+  border: 1px white;
   margin: 3px 0 3px 3px;
   padding: 3px;
   display: block;
@@ -88,7 +92,7 @@ ul {
   float: left;
 }
 #move-to-cart {
-  border: 1px dotted black;
+  border: 1px white;
   margin: 3px 3px 3px 0;
   padding: 3px;
   display: block;
