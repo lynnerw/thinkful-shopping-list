@@ -23,7 +23,7 @@ $("#inventory-list .store-area-3 li").mousedown(function() {
 });
 
 /* if mousedown occurs in shopping-list, hide item in shopping list and show in in-cart */
-$("#shopping-list ul").mousedown(function() {
+$("#shopping-list ul").on("click", "li", function() {
   $(this).clone().appendTo("#in-cart ul");
   $(this).hide();
 });
