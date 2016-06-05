@@ -141,3 +141,12 @@ hr {
 .store-area-3 li {
   border-bottom: 2px dotted blue;
 }
+#new-area1-item {
+  color: green;
+}
+#new-area2-item {
+  color: brown;
+}
+#new-area3-item {
+  color: blue;
+}
