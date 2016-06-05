@@ -5,7 +5,6 @@ $(document).ready(function() {
            var newItem = $("#new-area1-item").val();
            $("<li>" + newItem + "</li>").appendTo("#inventory-list .store-area-1 ul").html(newItem);
           e.preventDefault();
-          $.val("#new-area1-item").hide();
          }
   });
 
