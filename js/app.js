@@ -17,7 +17,7 @@ $('.store-area').on('click', '.button', function() {
         newIndex++;
       }
    item.appendTo('.list[data-list-number="' + newIndex + '"] .store-area[data-category="' + parentCategory + '"] ul');
-
+});
     // manage user input
   $('input[type="submit"]').click(function() {
      // assign text input to a variable
@@ -64,5 +64,4 @@ $('.store-area').on('click', '.button', function() {
      return false;
      });
      // end manage user input
-   });
 });
