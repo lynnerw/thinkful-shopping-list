@@ -1,65 +1,62 @@
 $(document).ready(function() {
 
-  document.getElementById("new-area1-item").addEventListener('keypress', function(e) {
-         if (e.keyCode == 13) {
-           var newItem = $("#new-area1-item").val();
-           $("<li>" + newItem + "</li>").appendTo("#inventory-list .store-area-1 ul").html(newItem);
-          e.preventDefault();
-         }
-  });
+$('.store-area').on('click', '.button', function() {
+    // declare variable for item to append
+   var item = $(this).parent('li');
 
-  document.getElementById("new-area2-item").addEventListener('keypress', function(e) {
-         if (e.keyCode == 13) {
-           var newItem = $("#new-area2-item").val();
-           $("<li>" + newItem + "</li>").appendTo("#inventory-list .store-area-2 ul");
-           console.log(newItem);
-             e.preventDefault();
-         }
-  });
+    // assign store area and its category attributes
+   var parentCategory = $(this).parents('.store-area').attr('data-category');
 
-  document.getElementById("new-area3-item").addEventListener('keypress', function(e) {
-         if (e.keyCode == 13) {
-           var newItem = $("#new-area3-item").val();
-           $("<li>" + newItem + "</li>").appendTo("#inventory-list .store-area-3 ul");
-           console.log(newItem);
-             e.preventDefault();
-         }
-  });
-/* if mousedown occurs in inventory-list area 1, move item to shopping-list */
-$("#inventory-list .store-area-1 li").mousedown(function() {
-  $(this).clone().appendTo("#shopping-list .store-area-1 ul")
-  $(this).toggleClass("item-selected");
+    // assign list number that corresponds to the index of the lists array
+   var parentListIndex = parseInt( $(this).parents('.list').attr('data-list-number') );
+
+   var newIndex = parentListIndex;
+      if ( $(this).hasClass('move-left') && parentListIndex > 0) {
+        newIndex--;
+      } else if ( $(this).hasClass('move-right') && parentListIndex < 2) {
+        newIndex++;
+      }
+   item.appendTo('.list[data-list-number="' + newIndex + '"] .store-area[data-category="' + parentCategory + '"] ul');
 });
 
-/* if mousedown occurs in inventory-list area 2, move item to shopping-list */
-$("#inventory-list .store-area-2 li").mousedown(function() {
-  $(this).clone().appendTo("#shopping-list .store-area-2 ul")
-  $(this).toggleClass("item-selected");
-});
+  // manage user input
+$('input[type="submit"]').click(function() {
+     // assign text input to a variable
+     var textInput = $('input[name="new-area-item"]', $(this).parent('form') );
+     var newItem = textInput.val();
 
-/* if mousedown occurs in inventory-list area 3, move item to shopping-list */
-$("#inventory-list .store-area-3 li").mousedown(function() {
-  $(this).clone().appendTo("#shopping-list .store-area-3 ul")
-  $(this).toggleClass("item-selected");
-});
+       console.log(newItem)
 
-/* if mousedown occurs in shopping-list, hide item in shopping list and show in in-cart */
-/*$("#shopping-list ul").on("click", "li", function() {
-  $(this).clone().appendTo("#in-cart ul");
-  $(this).hide();
-}); */
+     // assign store area category and attribute to newItem var
+     var parentCategory = $(this).parents('.store-area').attr('data-category');
 
-$(function() {
-    $("#in-cart ul").sortable({
-      revert: true
-    });
-    $("#shopping-list .store-area-1 ul li").draggable({
-      connectToSortable: "#in-cart ul",
-      helper: "clone",
-      revert: "invalid"
-    });
-/*    $( "ul, li" ).disableSelection(); */
-  });
+     // do nothing if the new item name is empty
+     if (newItem.length === 0) { return false; }
 
+     var itemAlreadyExists = false;
+
+     $('.store-area li').each(function() {
+       if ( $(this).text() === newItem) {
+         itemAlreadyExists = true;
+       }
+     });
+
+     if (itemAlreadyExists) {
+          return false;
+       }
+     // create the new item element and populate it using .text method
+     var newItem = $('<li />').text(newItem);
+     // add left and right arrows (fontaweseom) to new item
+     var newItemRightArrow = $('<i />').addClass('move-right button fa fa-arrow-right').appendTo(newItem);
+     var newItemLeftArrow = $('<i />').addClass('move-left button fa fa-arrow-left').prependTo(newItem);
+
+     newItem.appendTo('#inventory-list .store-area[data-category="' + parentCategory + '"] ul');
+
+      // clear the input
+     textInput.val('');
+
+     return false;
+     });
+     // end manage user input
 
 });
