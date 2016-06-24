@@ -2,30 +2,30 @@ $(document).ready(function() {
 
 $('.store-area').on('click', '.button', function() {
     // declare variable for item to append
-   var item = $(this).parent('li');
+    var item = $(this).parent('li');
 
     // assign store area and its category attributes
-   var parentCategory = $(this).parents('.store-area').attr('data-category');
+    var parentCategory = $(this).parents('.store-area').attr('data-category');
 
     // assign list number that corresponds to the index of the lists array
-   var parentListIndex = parseInt( $(this).parents('.list').attr('data-list-number') );
+    var parentListIndex = parseInt( $(this).parents('.list').attr('data-list-number') );
 
-   var newIndex = parentListIndex;
-      if ( $(this).hasClass('move-left') && parentListIndex > 0) {
-        newIndex--;
-      } else if ( $(this).hasClass('move-right') && parentListIndex < 2) {
-        newIndex++;
-      }
-   item.appendTo('.list[data-list-number="' + newIndex + '"] .store-area[data-category="' + parentCategory + '"] ul');
+    var newIndex = parentListIndex;
+
+    if ( $(this).hasClass('move-left') && parentListIndex > 0) {
+      newIndex--;
+    } else if ( $(this).hasClass('move-right') && parentListIndex < 2) {
+      newIndex++;
+    }
+
+    item.appendTo('.list[data-list-number="' + newIndex + '"] .store-area[data-category="' + parentCategory + '"] ul');
 });
 
   // manage user input
-$('input[type="submit"]').click(function() {
+$('.AddButton').click(function() {
      // assign text input to a variable
-     var textInput = $('input[name="new-area-item"]', $(this).parent('form') );
+     var textInput = $('.new-item-area', $(this).parent('form') );
      var newItem = textInput.val();
-
-       console.log(newItem)
 
      // assign store area category and attribute to newItem var
      var parentCategory = $(this).parents('.store-area').attr('data-category');
